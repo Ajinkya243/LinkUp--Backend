@@ -1,5 +1,9 @@
 const jwt=require("jsonwebtoken")
+const express=require("express")
 const{User}=require("../models/user")
+const cookieParser=require("cookie-parser");
+const app=express()
+app.use(cookieParser())
 const userAuth=async(req,res,next)=>{
     try{
         const cookies=req.cookies;
