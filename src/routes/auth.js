@@ -20,8 +20,6 @@ authRouter.post("/signup",async(req,res)=>{
     
 })
 
-
-
 authRouter.post("/login",async(req,res)=>{
     const{email,password}=req.body;
     const isUser=await User.findOne({email});
@@ -38,6 +36,11 @@ authRouter.post("/login",async(req,res)=>{
     else{
         throw new Error("Password is not valid")
     }
+})
+
+authRouter.post("/logout",async(req,res)=>{
+   res.cookie("token",null,{expires:new Date(Date.now())})
+   res.send()
 })
 
 module.exports={authRouter}
