@@ -4,6 +4,8 @@ const{userAuth}=require("../auth/userAuth")
 const{validateEditProfileData}=require("../utils/validateEditProfileData")
 const {User}=require("../models/user")
 
+
+
 profileRouter.get("/profile/view",userAuth,async(req,res)=>{
     try{
         const user=req.user;
