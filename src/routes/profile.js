@@ -9,7 +9,6 @@ const {User}=require("../models/user")
 profileRouter.get("/profile/view",userAuth,async(req,res)=>{
     try{
         const user=req.user;
-        console.log(user)
         res.send(user)
     }
     catch(error){
@@ -26,7 +25,6 @@ profileRouter.patch("/profile/edit",userAuth,async(req,res)=>{
         const loggedUser=req.user;
         const user=await User.findByIdAndUpdate(loggedUser._id,req.body,{new:true})
         res.send(user)
-        //console.log(loggedUser)
     }
     catch(error){
         res.status(400).send("Error occur"+error.message)
