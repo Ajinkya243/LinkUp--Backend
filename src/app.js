@@ -8,11 +8,15 @@ app.use(express.json())
 const cookieParser=require("cookie-parser")
 app.use(cookieParser())
 
+app.get("/",(req,res)=>{
+    res.send("Welcome to LinkUp Backend");
+})
 
 app.use("/",authRouter);
 app.use("/",profileRouter);
 app.use("/",requestRouter);
 app.use("/",userRouter);
+
 
 
 const {connectDB}=require("./config/database")
