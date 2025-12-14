@@ -30,5 +30,5 @@ connectionRequestSchema.pre("save",function(next){  //this run before save
 })
 
 connectionRequestSchema.index({fromUserId:1,toUserId:1}) //indexes for fast query search
-const ConnectionRequest=new mongoose.model("ConnectionRequest",connectionRequestSchema)
+const ConnectionRequest=mongoose.model("ConnectionRequest",connectionRequestSchema)
 module.exports={ConnectionRequest}

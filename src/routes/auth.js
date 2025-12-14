@@ -29,7 +29,6 @@ authRouter.post("/login",async(req,res)=>{
     const bcryptPass=await bcrypt.compare(password,isUser.password)
     if(bcryptPass){
         const token=await jwt.sign({_id:isUser._id},"ajinkya",{expiresIn:"24h"})
-        console.log(token)
         res.cookie("token",token)
         res.send("User login successful")
     }
