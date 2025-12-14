@@ -12,7 +12,7 @@ authRouter.post("/signup",async(req,res)=>{
     const bcryptPassword=await bcrypt.hash(password,10)
     const userObj=new User({...req.body,password:bcryptPassword})
     await userObj.save()
-    res.send(userObj)
+    res.json({message:"User login successfully",userObj})
     }
     catch(error){
         res.send("Error:"+error.message)
