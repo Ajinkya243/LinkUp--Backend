@@ -33,7 +33,7 @@ authRouter.post("/login",async(req,res)=>{
         res.json({message:"User login successful",user:isUser,token});
     }
     else{
-        res.status(500).json({message:"Credentials are wrong"})
+        res.status(401).json({message:"Credentials are wrong"})
     }
 })
 
