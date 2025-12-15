@@ -6,9 +6,9 @@ const app=express()
 app.use(cookieParser())
 const userAuth=async(req,res,next)=>{
     try{
-        const cookies=req.cookies;
-    if(!cookies.token) throw new Error("Token is not valid")
-    const decode=await jwt.verify(cookies.token,"ajinkya")
+    const authHeader = req.headers.authorization;
+    if(!authHeader) throw new Error("Token is not valid")
+    const decode=await jwt.verify(authHeader,"ajinkya")
     const{_id}=decode;
     const user=await User.findById(_id)
     if(!user){
