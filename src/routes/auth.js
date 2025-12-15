@@ -30,7 +30,7 @@ authRouter.post("/login",async(req,res)=>{
     if(bcryptPass){
         const token=await jwt.sign({_id:isUser._id},"ajinkya",{expiresIn:"24h"})
         res.cookie("token",token)
-        res.json({message:"User login successful",user:isUser,token});
+        res.json({message:"User login successful",user:isUser});
     }
     else{
         throw new Error("Password is not valid")
