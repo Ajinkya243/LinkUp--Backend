@@ -2,7 +2,7 @@ const validateEditProfileData = (req) => {
     const { email } = req.body;
     if (email) return false; // Block changing email
 
-    const allowedEditFields = ["firstName", "lastName", "age", "skills"];
+    const allowedEditFields = ["firstName", "lastName", "age","gender","photo"];
     const isAllowed = Object.keys(req.body).every(el => allowedEditFields.includes(el));
     return isAllowed;
 };
