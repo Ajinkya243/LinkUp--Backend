@@ -20,7 +20,7 @@ userRouter.get("/user/requests/received",userAuth,async(req,res)=>{
 userRouter.get("/user/connections",userAuth,async(req,res)=>{
     try{
         const loggedUser=req.user;
-        const connectionRequest=await ConnectionRequest.find({$or:[{toUserId:loggedUser._id,status:"accepted"},{fromUserId:loggedUser._id,status:"accepted"}]}).populate("fromUserId","firstName lastName age gender").populate("toUserId","firstName lastName age gender")
+        const connectionRequest=await ConnectionRequest.find({$or:[{toUserId:loggedUser._id,status:"accepted"},{fromUserId:loggedUser._id,status:"accepted"}]}).populate("fromUserId","firstName lastName age gender photo").populate("toUserId","firstName lastName age gender photo")
         const data=connectionRequest.map(el=>{
                 if(el.fromUserId._id.toString() === loggedUser._id.toString()){
                     return el.toUserId
