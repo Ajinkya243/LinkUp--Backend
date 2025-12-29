@@ -12,7 +12,8 @@ authRouter.post("/signup",async(req,res)=>{
     const bcryptPassword=await bcrypt.hash(password,10)
     const userObj=new User({...req.body,password:bcryptPassword})
     await userObj.save()
-    res.json({message:"User login successfully",userObj})
+    const token=jwt.sign({_id:userObj._id},"ajinkya",{expiresIn:"24h"})
+    res.json({message:"User login successfully",userObj,token})
     }
     catch(error){
         res.send("Error:"+error.message)
